@@ -17,6 +17,7 @@
         <div>
             <label for="pwd">password input type:</label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">email input type:</label>
@@ -82,6 +83,17 @@ tel.addEventListener('input', function() {
         telError.textContent = "Mobile number format is incorrect";
 });
 
+
+ // regex for password
+ const pwd = document.querySelector('#pwd');
+    const pwdError = document.querySelector('.pwd-error');
+    pwd.addEventListener('input', function() {
+        let pwdRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        if (pwdRegex.test(pwd.value))
+            pwdError.textContent = "";
+        else
+            pwdError.textContent = "Password must be at least 8 characters long, contain at least one uppercase letter, one number, and exactly one special character.";
+    });
 
 
 //for salary
